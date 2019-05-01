@@ -32,7 +32,7 @@ cd Software/Java
 mvn clean package
 ```
 
-Once built, use the */Software/MATLAB/startup.m* function to initialize the interface which will use the
+Once built, use the ```/Software/MATLAB/startup.m``` function to initialize the interface which will use the
 AWS Credentials Provider Chain to authenticate. Please see the [relevant documentation](Documentation/Authentication.md)
 on how to specify the credentials.
 

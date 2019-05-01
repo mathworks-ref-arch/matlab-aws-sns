@@ -1,7 +1,5 @@
 # MATLAB Interface *for AWS SNS*
 
-*TODO add boiler plate doc for other packages*
-
 ## Contents
 1. [Installation](Installation.md)
 2. [Authentication](Authentication.md)
@@ -11,6 +9,5 @@
 6. [Building the SDK](Rebuild.md)
 7. [API Documentation](SNSApidoc.md)
 
-------------
 
 [//]: #  (Copyright 2019 The MathWorks, Inc.)
