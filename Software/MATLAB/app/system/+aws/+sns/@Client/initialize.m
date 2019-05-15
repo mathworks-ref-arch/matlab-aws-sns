@@ -110,23 +110,23 @@ end
 %% build a handle to the SNS client
 builderH = AmazonSNSClientBuilder.standard().withCredentials(awsCredentials).withClientConfiguration(obj.clientConfiguration.Handle);
 
-% set the builder region for credentials.json case
-if obj.useCredentialsProviderChain == false
-    builderH.setRegion(awsRegion.getName)
-end
 
-% configure the Endpoint if set - TODO check this is supported for SNS builder
-if ~isempty(obj.endpointURI.Host)
-    % write(logObj,'debug','Configuring SNS Endpoint');
-    % if the URI has a path we don't include it in the end point as this is likely bucket name
-    endpointHostPort = [char(endpointURI.Scheme) '://' char(endpointURI.EncodedAuthority)];
-    endpointRegion =  awsRegion.getName;
+%% configure the Endpoint if set else just set the region
+if isempty(obj.endpointURI.Host)
+    % set the region directly if not using a custom endpoint otherwise the region
+    % is configured as part of the endpoint configuration
+    builderH.setRegion(awsRegion.getName);
+else
+    % if the URI has a path we don't include it in the endpoint as this is likely bucket name
+    endpointHostPort = [char(obj.endpointURI.Scheme) '://' char(obj.endpointURI.EncodedAuthority)];
+    endpointRegion = char(awsRegion.getName);
     write(logObj,'verbose',['Setting Endpoint URI & Region to: ',endpointHostPort,' ',endpointRegion]);
     endPointConfig = javaObject('com.amazonaws.client.builder.AwsClientBuilder$EndpointConfiguration',endpointHostPort, endpointRegion);
-    builderH.setEndpointConfiguration(endPointConfig)
+    builderH.setEndpointConfiguration(endPointConfig);
 end
 
-% Build the SNS client handle
+
+%% Build the SNS client handle
 % We are ready to build() as we have a fully configured builder
 obj.Handle = builderH.build();
 
