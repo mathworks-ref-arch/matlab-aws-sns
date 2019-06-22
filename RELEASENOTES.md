@@ -1,6 +1,9 @@
 # MATLAB Interface *for AWS SNS*
 # Release Notes
 
+## Release 0.1.2 (21st Jun 2019)
+* Updated the security notice.
+
 ## Release 0.1.1 (15th May 2019)
 * Minor bug fixes
 
