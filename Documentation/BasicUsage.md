@@ -66,6 +66,5 @@ Full details of the supported API can be found in the [API Documentation](SNSApi
 * [AWS API Reference](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/index.html?com/amazonaws/services/sns/AmazonSNSClient.html)
 * [AWS Getting Started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html)
 
----------------------
 
 [//]: #  (Copyright 2018 The MathWorks, Inc.)
