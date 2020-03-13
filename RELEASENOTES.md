@@ -1,6 +1,10 @@
 # MATLAB Interface *for AWS SNS*
 # Release Notes
 
+## Release 0.1.4 (5th March 2020)
+* Updated license
+* Updated security notice
+
 ## Release 0.1.3 (5th November 2019)
 * Updated AWS SDK version to 1.11.567
 * Improved pom.xml file
@@ -22,4 +26,4 @@
 ## Release 0.0.1 (September 2018)
 * Initial release supporting SNS
 
-[//]: #  (Copyright 2019 The MathWorks, Inc.)
+[//]: #  (Copyright 2019-2020 The MathWorks, Inc.)
