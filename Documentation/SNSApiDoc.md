@@ -1,7 +1,7 @@
-# MATLAB Interface *for AWS SNS* API documentation
+# MATLAB Interface *for Amazon SNS* API documentation
 
 
-## AWS SNS Interface Objects and Methods:
+## Amazon SNS Interface Objects and Methods:
 * @Client
 
 
@@ -12,7 +12,7 @@
 
 ### @Client/Client.m
 ```notalanguage
-  CLIENT Object to represent an AWS SNS client
+  CLIENT Object to represent an Amazon SNS client
   The client is used to carry out operations with the SNS service
  
   Example:
@@ -24,6 +24,10 @@
      createTopicResult = sns.createTopic('myTopicName');
      % Shutdown the client when no longer needed
      sns.shutdown();
+
+    Documentation for aws.sns.Client
+       doc aws.sns.Client
+
 
 
 
@@ -47,12 +51,12 @@
 ```
 ### @Client/createTopic.m
 ```notalanguage
-  CREATETOPIC Creates an AWS SNS topic
+  CREATETOPIC Creates an Amazon SNS topic
   Creates a topic to which notifications can be published. Users can create
   at most 100,000 topics. For more information on SNS limits and
   restrictions see: https://aws.amazon.com/sns/faqs/
   A CreateTopicResult object is returned. The CreateTopicResult.getTopicArn()
-  method can be used to return the ARN when sucessful.
+  method can be used to return the ARN when successful.
  
   Example:
      sns = aws.sns.Client;
@@ -63,7 +67,7 @@
 ```
 ### @Client/deleteTopic.m
 ```notalanguage
-  DELETETOPIC Deletes an AWS SNS topic
+  DELETETOPIC Deletes an Amazon SNS topic
   Deletes a topic and all its subscriptions. Deleting a topic might prevent
   some messages previously sent to the topic from being delivered to
   subscribers. Deleting a topic that does not exist does not result in an error.
@@ -286,7 +290,7 @@
 ```
 
 ------
-## AWS SNS Interface +model Objects and Methods:
+## Amazon SNS Interface +model Objects and Methods:
 * @ConfirmSubscriptionResult
 * @CreateTopicResult
 * @DeleteTopicResult
@@ -308,6 +312,10 @@
 ```notalanguage
   CONFIRMSUBSCRIPTIONRESULT Object to represent the result of a confirmSubscription call
 
+    Documentation for aws.sns.model.ConfirmSubscriptionResult
+       doc aws.sns.model.ConfirmSubscriptionResult
+
+
 
 
 ```
@@ -320,6 +328,10 @@
 ### @CreateTopicResult/CreateTopicResult.m
 ```notalanguage
   CREATETOPICRESULT Object to represent the result of a createTopic call
+
+    Documentation for aws.sns.model.CreateTopicResult
+       doc aws.sns.model.CreateTopicResult
+
 
 
 
@@ -341,6 +353,10 @@
 ### @DeleteTopicResult/DeleteTopicResult.m
 ```notalanguage
   DELETETOPICRESULT Object to represent the result of a deleteTopic call
+
+    Documentation for aws.sns.model.DeleteTopicResult
+       doc aws.sns.model.DeleteTopicResult
+
 
 
 
@@ -366,6 +382,10 @@
 ```notalanguage
   GETSUBSCRIPTIONATTRIBUTESRESULT Represent the result of a getSubscriptionAttributes call
 
+    Documentation for aws.sns.model.GetSubscriptionAttributesResult
+       doc aws.sns.model.GetSubscriptionAttributesResult
+
+
 
 
 ```
@@ -387,6 +407,10 @@
 ```notalanguage
   GETTOPICATTRIBUTESRESULT Object to represent the result of a getTopicAttributes call
 
+    Documentation for aws.sns.model.GetTopicAttributesResult
+       doc aws.sns.model.GetTopicAttributesResult
+
+
 
 
 ```
@@ -407,6 +431,10 @@
 ### @ListSubscriptionsResult/ListSubscriptionsResult.m
 ```notalanguage
   LISTSUBSCRIPTIONSRESULT Object to represent the result of a listSubscriptions call
+
+    Documentation for aws.sns.model.ListSubscriptionsResult
+       doc aws.sns.model.ListSubscriptionsResult
+
 
 
 
@@ -442,6 +470,10 @@
 ```notalanguage
   LISTTOPICSRESULT Object to represent the result of a listTopics call
 
+    Documentation for aws.sns.model.ListTopicsResult
+       doc aws.sns.model.ListTopicsResult
+
+
 
 
 ```
@@ -472,6 +504,10 @@
 ```notalanguage
   SETTOPICATTRIBUTESRESULT Object to represent the result of a setTopicAttributes call
 
+    Documentation for aws.sns.model.SetTopicAttributesResult
+       doc aws.sns.model.SetTopicAttributesResult
+
+
 
 
 ```
@@ -496,6 +532,10 @@
 ```notalanguage
   SUBSCRIBERESULT Object to represent the result of a subscribe call
 
+    Documentation for aws.sns.model.SubscribeResult
+       doc aws.sns.model.SubscribeResult
+
+
 
 
 ```
@@ -517,6 +557,10 @@
 ### @UnsubscribeResult/UnsubscribeResult.m
 ```notalanguage
   UNSUBSCRIBERESULT Object to represent the result of an unsubscribe call
+
+    Documentation for aws.sns.model.UnsubscribeResult
+       doc aws.sns.model.UnsubscribeResult
+
 
 
 
@@ -559,9 +603,35 @@
     s3.clientConfiguration.setProxyPort(8080);
     s3.initialize();
 
-    Reference page in Doc Center
+    Documentation for aws.ClientConfiguration
        doc aws.ClientConfiguration
 
+
+
+
+```
+### @ClientConfiguration/getNonProxyHosts.m
+```notalanguage
+  GETNONPROXYHOSTS Sets optional hosts accessed without going through the proxy
+  Returns either the nonProxyHosts set on this object, or if not provided,
+  returns the value of the Java system property http.nonProxyHosts.
+  Result is returned as a character vector.
+ 
+  Note the following caveat from the Amazon DynamoDB documentation:
+ 
+  We still honor this property even when getProtocol() is https, see
+  http://docs.oracle.com/javase/7/docs/api/java/net/doc-files/net-properties.html
+  This property is expected to be set as a pipe separated list. If neither are
+  set, returns the value of the environment variable NO_PROXY/no_proxy.
+  This environment variable is expected to be set as a comma separated list.
+
+
+
+```
+### @ClientConfiguration/setNonProxyHosts.m
+```notalanguage
+  SETNONPROXYHOSTS Sets optional hosts accessed without going through the proxy
+  Hosts should be specified as a character vector.
 
 
 
@@ -689,7 +759,7 @@
 ```notalanguage
   OBJECT Root object for all the AWS SDK objects
 
-    Reference page in Doc Center
+    Documentation for aws.Object
        doc aws.Object
 
 
@@ -883,4 +953,4 @@
 
 ------------    
 
-[//]: # (Copyright 2019 The MathWorks, Inc.)
+[//]: # (Copyright 2018-2021 The MathWorks, Inc.)

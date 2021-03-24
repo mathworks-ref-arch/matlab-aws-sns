@@ -1,4 +1,4 @@
-# MATLAB Interface *for AWS SNS*
+# MATLAB Interface *for Amazon SNS*
 
 ## Contents
 1. [Installation](Installation.md)

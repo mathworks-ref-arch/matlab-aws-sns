@@ -1,16 +1,16 @@
 function createTopicResult = createTopic(obj, topicName)
-% CREATETOPIC Creates an AWS SNS topic
+% CREATETOPIC Creates an Amazon SNS topic
 % Creates a topic to which notifications can be published. Users can create
 % at most 100,000 topics. For more information on SNS limits and
 % restrictions see: https://aws.amazon.com/sns/faqs/
 % A CreateTopicResult object is returned. The CreateTopicResult.getTopicArn()
-% method can be used to return the ARN when sucessful.
+% method can be used to return the ARN when successful.
 %
 % Example:
 %    sns = aws.sns.Client;
 %    createTopicResult = sns.createTopic('myTopicName')
 
-% Copyright 2018 The MathWorks, Inc.
+% Copyright 2018-2021 The MathWorks, Inc.
 
 % Return error if input is not character vector
 if ~ischar(topicName)

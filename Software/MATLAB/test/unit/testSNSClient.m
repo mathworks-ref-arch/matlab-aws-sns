@@ -1,9 +1,9 @@
 classdef testSNSClient < matlab.unittest.TestCase
-    % TESTSNSCLIENT Test for the  MATLAB Interface for AWS SNS
+    % TESTSNSCLIENT Test for the  MATLAB Interface for Amazon SNS
     %
     % The test suite exercises the basic operations on the SNS Client.
 
-    % Copyright 2018 The MathWorks, Inc.
+    % Copyright 2018-2021 The MathWorks, Inc.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Please add your test cases below
@@ -36,7 +36,11 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing testInitialization');
             % Create the client and initialize
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             testCase.verifyNotEmpty(sns.Handle);
@@ -45,22 +49,26 @@ classdef testSNSClient < matlab.unittest.TestCase
 
         function testInitializationOtherCredentials(testCase)
             write(testCase.logObj,'debug','Testing testInitializationOtherCredentials');
-            % Create the client and initialize using a temp copy of the
-            % credentials file in the same directory
-            currentCreds = which('credentials.json');
-            [pathstr,~,~] = fileparts(currentCreds);
+            if ~strcmpi(getenv('GITLAB_CI'), 'true')
+                warning('Skipping test when not in CI system');                
+            else
+                % Create the client and initialize using a temp copy of the
+                % credentials file in the same directory
+                currentCreds = which('credentials.json');
+                [pathstr,~,~] = fileparts(currentCreds);
 
-            newCreds = fullfile(pathstr, 'testInitializationOtherCredentials.json');
-            copyfile(currentCreds,newCreds);
+                newCreds = fullfile(pathstr, 'testInitializationOtherCredentials.json');
+                copyfile(currentCreds,newCreds);
 
-            sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
-            sns.credentialsFilePath = newCreds;
-            sns.initialize();
+                sns = aws.sns.Client();
+                sns.useCredentialsProviderChain = false;
+                sns.credentialsFilePath = newCreds;
+                sns.initialize();
 
-            testCase.verifyNotEmpty(sns.Handle);
-            delete(newCreds);
-            sns.shutdown();
+                testCase.verifyNotEmpty(sns.Handle);
+                delete(newCreds);
+                sns.shutdown();
+            end
         end
 
         % Create a topic and ensuring that
@@ -69,7 +77,11 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing testCreateTopic');
             % Create the client
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % Verify that empty topic name fails.
@@ -110,7 +122,11 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing delete topic');
             % Create the client
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % Create a queue
@@ -155,7 +171,11 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing topic attributes');
             % Create the client
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % Create a topic
@@ -192,7 +212,11 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing list topics');
             % Create the client
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % Create a > 100 topics
@@ -242,12 +266,20 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing subscribe & unsubscribe');
             % Create the clients
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % requires SQS package
             sqs = aws.sqs.Client();
-            sqs.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sqs.useCredentialsProviderChain = false;
+            else
+                sqs.useCredentialsProviderChain = true;
+            end
             sqs.initialize();
             testCase.verifyNotEmpty(sqs.Handle);
 
@@ -364,12 +396,20 @@ classdef testSNSClient < matlab.unittest.TestCase
             write(testCase.logObj,'debug','Testing publish to topic');
             % Create the client
             sns = aws.sns.Client();
-            sns.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sns.useCredentialsProviderChain = false;
+            else
+                sns.useCredentialsProviderChain = true;
+            end
             sns.initialize();
 
             % requires SQS package
             sqs = aws.sqs.Client();
-            sqs.useCredentialsProviderChain = false;
+            if strcmpi(getenv('GITLAB_CI'), 'true')
+                sqs.useCredentialsProviderChain = false;
+            else
+                sqs.useCredentialsProviderChain = true;
+            end
             sqs.initialize();
             testCase.verifyNotEmpty(sqs.Handle);
 

@@ -7,7 +7,7 @@ function initStat = initialize(obj, varargin)
 %    sns = aws.sns.Client();
 %    sns.intialize();
 
-% Copyright 2019 The MathWorks, Inc.
+% Copyright 2019-2021 The MathWorks, Inc.
 
 %% Imports
 % Exceptions
@@ -25,7 +25,7 @@ import com.amazonaws.auth.profile.ProfileCredentialsProvider
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain
 
 % Builders
-% Import AWS SNS client builder
+% Import Amazon SNS client builder
 import com.amazonaws.services.sns.AmazonSNS
 import com.amazonaws.services.sns.AmazonSNSClient
 import com.amazonaws.services.sns.AmazonSNSClientBuilder

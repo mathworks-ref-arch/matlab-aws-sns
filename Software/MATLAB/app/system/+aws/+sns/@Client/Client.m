@@ -1,5 +1,5 @@
 classdef Client < aws.Object
-    % CLIENT Object to represent an AWS SNS client
+    % CLIENT Object to represent an Amazon SNS client
     % The client is used to carry out operations with the SNS service
     %
     % Example:
@@ -34,7 +34,7 @@ classdef Client < aws.Object
             write(logObj,'verbose','Creating Client');
             % error if JVM is not enabled or MATLAB is too old
             if ~usejava('jvm')
-                write(logObj,'error','MATLAB must be used with the JVM enabled to access AWS SNS');
+                write(logObj,'error','MATLAB must be used with the JVM enabled to access Amazon SNS');
             end
             if verLessThan('matlab','9.2') % R2017a
                 write(logObj,'error','MATLAB Release 2017a or newer is required');

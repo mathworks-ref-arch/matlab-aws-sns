@@ -1,5 +1,7 @@
-# MATLAB Interface *for AWS SNS*
+# MATLAB Interface *for Amazon SNS*
 # Release Notes
+## Release 0.1.6 (22nd Mar 2021)
+* Updated to support integrations testing
 
 ## Release 0.1.5 (13th Oct 2020)
 * Bumped junit version

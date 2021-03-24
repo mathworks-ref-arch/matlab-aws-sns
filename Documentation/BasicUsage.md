@@ -42,7 +42,7 @@ deleteTopicResult = sns.deleteTopic(topicArn);
 ```
 
 ## Subscribing to a topic
-Once a topic has been created, the next step is to subscribe an endpoint to that topic. An endpoint can be a mobile app, web server, email address or an AWS SQS queue that can receive notification messages from AWS SNS. Once subscribed, the endpoint will receive all messages published to that topic. To request a subscription, 3 inputs are required. The topic ARN, the protocol and the endpoint. If carried out successfully the user should be notified that confirmation is pending. Example showing topic ARN, protocol and endpoint:
+Once a topic has been created, the next step is to subscribe an endpoint to that topic. An endpoint can be a mobile app, web server, email address or an Amazon SQS queue that can receive notification messages from Amazon SNS. Once subscribed, the endpoint will receive all messages published to that topic. To request a subscription, 3 inputs are required. The topic ARN, the protocol and the endpoint. If carried out successfully the user should be notified that confirmation is pending. Example showing topic ARN, protocol and endpoint:
 
 ```
 subscribeResult = sns.subscribe('arn:aws:sns:us-west-1:1232345:SNSMyTopicName', 'email-json', 'john.smith@example.com');
@@ -52,7 +52,7 @@ subscriptionArn =
 
    'pending confirmation'
  ```
-Note that in many cases confirmation to a subscription is required to validate that the endpoint intents to receive notifications. Authorization permitting AWS SQS will not require confirmation and the ARN will be returned immediately.
+Note that in many cases confirmation to a subscription is required to validate that the endpoint intents to receive notifications. Authorization permitting Amazon SQS will not require confirmation and the ARN will be returned immediately.
 
 ## Publishing to a topic
 Publishing sends a message to an SNS topic which forwards the message to endpoints e.g. sending a text/SMS message. If sending a message to a topic, SNS delivers the message to each endpoint that is subscribed to the topic. The format of the message depends on the notification protocol for each subscribed endpoint. When a messageId is returned, the message has been saved and SNS will attempt to deliver it shortly. When publishing a message, the user must enter the ARN of the topic along with the message they want to send.
@@ -67,4 +67,4 @@ Full details of the supported API can be found in the [API Documentation](SNSApi
 * [AWS Getting Started with Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html)
 
 
-[//]: #  (Copyright 2018 The MathWorks, Inc.)
+[//]: #  (Copyright 2018-2021 The MathWorks, Inc.)

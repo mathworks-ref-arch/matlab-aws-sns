@@ -1,12 +1,12 @@
-# MATLAB Interface *for AWS SNS*
+# MATLAB Interface *for Amazon SNS*
 
-MATLAB® interface for the Amazon Web Services SNS™ service.
+MATLAB® interface for the Amazon SNS™ service.
 
 ## Requirements
 ### MathWorks products
 * Requires MATLAB release R2017a or later.
 * AWS Common utilities found at https://github.com/mathworks-ref-arch/matlab-aws-common
-* (Recommended) MATLAB Interface *for AWS SQS™* found at https://github.com/mathworks-ref-arch/matlab-aws-sqs
+* (Recommended) MATLAB Interface *for Amazon SQS™* found at https://github.com/mathworks-ref-arch/matlab-aws-sqs
 
 ### 3rd party products
 * Amazon Web Services account   
@@ -14,7 +14,7 @@ MATLAB® interface for the Amazon Web Services SNS™ service.
 To build a required JAR file:   
 * [Maven](https://maven.apache.org/)
 * JDK 7
-* [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) (version 1.11.367 or later)
+* [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) (version 1.11.567 or later)
 
 ## Getting Started
 Please refer to the [Documentation](Documentation/README.md) to get started.
@@ -56,7 +56,7 @@ subscribeResult = sns.subscribe(topicArn,'sqs',queueArn);
 subscriptionArn = subscribeResult.getSubscriptionArn();
 
 % Configure a custom SQS policy to allow publishing, in this case by all accounts
-% Requires the installation of the MATLAB Interface for AWS SQS, the
+% Requires the installation of the MATLAB Interface for Amazon SQS, the
 % creation of a queue and an SQS client
 keySet = {'Policy'};
 policyStr = ['{"Version":"2012-10-17",',...
@@ -102,7 +102,7 @@ sns.shutdown();
 4. [MATLAB Parallel Server™](https://www.mathworks.com/products/distriben.html) (R2017a or later)
 
 ## License
-The license for the MATLAB Interface *for AWS SNS* is available in the [LICENSE.md](LICENSE.md) file in this GitHub repository. This package uses certain third-party content which is licensed under separate license agreements. See the [pom.xml](Software/Java/pom.xml) file for third-party software downloaded at build time.
+The license for the MATLAB Interface *for Amazon SNS* is available in the [LICENSE.md](LICENSE.md) file in this GitHub repository. This package uses certain third-party content which is licensed under separate license agreements. See the [pom.xml](Software/Java/pom.xml) file for third-party software downloaded at build time.
 
 ## Enhancement Request
 Provide suggestions for additional features or capabilities using the following link:   
