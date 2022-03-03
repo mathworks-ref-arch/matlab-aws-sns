@@ -5,7 +5,7 @@ function initStat = initialize(obj, varargin)
 %
 % Example:
 %    sns = aws.sns.Client();
-%    sns.intialize();
+%    sns.initialize();
 
 % Copyright 2019-2021 The MathWorks, Inc.
 

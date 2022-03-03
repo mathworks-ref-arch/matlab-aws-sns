@@ -122,7 +122,7 @@
  
   Example:
      sns = aws.sns.Client();
-     sns.intialize();
+     sns.initialize();
 
 
 

@@ -4,7 +4,7 @@ function startup(varargin)
 % path. It will omit the SVN and other crud.  Modify undesired path
 % filters as desired.
 
-% Copyright 2018 The MathWorks, Inc.
+% Copyright 2018-2021 The MathWorks, Inc.
 
 % Don't run the startup file if executed from within a deployed function (CTF)
 if ~isdeployed()
@@ -15,7 +15,7 @@ if ~isdeployed()
     here = fileparts(fileparts(fileparts(mfilename('fullpath'))));
 
     %% Add a banner to the top
-    iDisplayBanner('MATLAB Interface for AWS SNS');
+    iDisplayBanner('MATLAB Interface for Amazon SNS');
 
     %% Check if the dependencies are in place
     iDisplayBanner('Checking if dependencies are met');
@@ -41,7 +41,7 @@ end
 
 function iCheckDependencies(rootDir)
 
-% Check if the common utilites exist otherwise raise and error and stop
+% Check if the common utilities exist otherwise raise and error and stop
 commonDir = fullfile(fileparts(rootDir),'matlab-aws-common');
 
 if ~exist(commonDir, 'dir')
@@ -50,9 +50,10 @@ if ~exist(commonDir, 'dir')
 end
 
 % Check if the JAR file exists
+commonJarPath = fullfile(commonDir,'Software','MATLAB','lib','jar','aws-sdk-0.1.0.jar');
 jarPath = fullfile(rootDir,'Software','MATLAB','lib','jar','aws-sdk-0.1.0.jar');
-if ~exist(jarPath,'file')
-    error('AWS:SNS',['Could not locate jar file at: ',strrep(jarPath,'\','\\')]);
+if ~exist(commonJarPath,'file') && ~exist(jarPath,'file')
+    error('AWS:SNS','Could not locate jar file at: %s or %s',jarPath, commonJarPath);
 end
 
 end
@@ -60,7 +61,7 @@ end
 
 function iAddCommonUtilities(rootDir)
 
-% Check if the common utilites exist otherwise raise and error and stop
+% Check if the common utilities exist otherwise raise and error and stop
 commonDir = fullfile(fileparts(rootDir),'matlab-aws-common');
 startUpFile = fullfile(commonDir,'Software','MATLAB','startup.m');
 
@@ -69,7 +70,7 @@ end
 
 
 function iAddSNS(rootDir)
-iDisplayBanner('Adding MATLAB interface for AWS SNS Paths');
+iDisplayBanner('Adding MATLAB interface for Amazon SNS Paths');
 
 snsDir = fullfile(rootDir,'Software','MATLAB');
 rootDirs={fullfile(snsDir,'app'),true;...
