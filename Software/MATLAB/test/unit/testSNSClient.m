@@ -274,10 +274,20 @@ classdef testSNSClient < matlab.unittest.TestCase
             sns.initialize();
 
             % requires SQS package
-            sqs = aws.sqs.Client();
             if strcmpi(getenv('GITLAB_CI'), 'true')
+                if exist('aws.sqs.Client', 'class') ~= 8
+                    write(testCase.logObj,'debug','  SQS paths not set');
+                    error('SQS paths not set');
+                end
+                sqs = aws.sqs.Client();
                 sqs.useCredentialsProviderChain = false;
             else
+                if exist('aws.sqs.Client', 'class') ~= 8
+                    userDir = char(java.lang.System.getProperty('user.home'));
+                    sqsStartup = fullfile(userDir, 'git', 'matlab-aws-sqs', 'Software', 'MATLAB','startup.m');
+                    run(sqsStartup);
+                end
+                sqs = aws.sqs.Client();
                 sqs.useCredentialsProviderChain = true;
             end
             sqs.initialize();
@@ -403,11 +413,21 @@ classdef testSNSClient < matlab.unittest.TestCase
             end
             sns.initialize();
 
-            % requires SQS package
-            sqs = aws.sqs.Client();
+             % requires SQS package
             if strcmpi(getenv('GITLAB_CI'), 'true')
+                if exist('aws.sqs.Client', 'class') ~= 8
+                    write(testCase.logObj,'debug','  SQS paths not set');
+                    error('SQS paths not set');
+                end
+                sqs = aws.sqs.Client();
                 sqs.useCredentialsProviderChain = false;
             else
+                if exist('aws.sqs.Client', 'class') ~= 8
+                    userDir = char(java.lang.System.getProperty('user.home'));
+                    sqsStartup = fullfile(userDir, 'git', 'matlab-aws-sqs', 'Software', 'MATLAB','startup.m');
+                    run(sqsStartup);
+                end
+                sqs = aws.sqs.Client();
                 sqs.useCredentialsProviderChain = true;
             end
             sqs.initialize();

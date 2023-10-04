@@ -13,7 +13,7 @@ MATLAB® interface for the Amazon SNS™ service.
 
 To build a required JAR file:   
 * [Maven](https://maven.apache.org/)
-* JDK 7
+* JDK 7 or later
 * [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) (version 1.11.567 or later)
 
 ## Getting Started
