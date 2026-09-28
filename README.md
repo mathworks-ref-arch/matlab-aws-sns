@@ -1,3 +1,5 @@
+⛔️ **DEPRECATED** - Please use the [MATLAB AWS Support v2](https://github.com/mathworks-ref-arch/matlab-aws-support-v2). The [AWS SDK for Java v1.x reached end-of support on Dec 31, 2025](https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-aws-sdk-for-java-v1-x-on-december-31-2025/). This repository is archived (no updates or fixes).
+
 # MATLAB Interface *for Amazon SNS*
 
 MATLAB® interface for the Amazon SNS™ service.
